@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-Technologien: Das Weben</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="w3-bar w3-light-grey">
+        <a href="#info" class="w3-bar-item w3-button">Information</a>
+        <a href="#canvasInput" class="w3-bar-item w3-button">Der Canvas der Web-Technologien</a>
+        <a href="#ausgabe" class="w3-bar-item w3-button">Ausgabe</a>
+        <a href="#canvas" class="w3-bar-item w3-button">Muster</a>
+    </nav>
+
+    <section id="info" class="w3-container">
+        <h2>Über das Weben</h2>
+        <p>Hier wird die Applikation und die Webtechniken beschrieben...</p>
+        <!-- Weitere Inhalte und Bilder -->
+    </section>
+
+    <section id="eingabe" class="w3-container">
+        <h2>Eingabebereich</h2>
+        <!-- Reaktive Section -->
+    </section>
+
+    <section id="ausgabe" class="w3-container">
+        <h2>Ausgabebereich</h2>
+    </section>
+
+    <section id="canvasInput" class="w3-container">
+        <h2>Der Canvas der Web-Technologien</h2>
+        <!-- Eingabeformular -->
+        <div id=canvasDiv>
+            <form id="webForm" @submit.prevent="submitForm">
+            <label for="farbe">Fadenfarbe:</label>
+            <input type="color" id="farbe" v-model="inputData.farbe"><br><br>
+    
+            <label for="muster">Webmuster-Typ:</label>
+            <select id="muster" v-model="inputData.muster">
+                <option value="leinen">Leinen</option>
+                <option value="köper">Köper</option>
+                <option value="atlas">Atlas</option>
+            </select><br><br>
+    
+            <label for="textur">Stofftextur:</label>
+            <input type="range" id="textur" v-model.number="inputData.textur" min="5" max="50"><br><br>
+    
+            <input type="submit" value="Weben">
+        </form>
+    </div><br><br>
+        <canvas id="webmusterCanvas"></canvas>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue@next/dist/vue.global.prod.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

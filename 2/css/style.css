@@ -1,0 +1,71 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+}
+
+h2 {
+    color: #0d47a1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+form {
+    width: 100%;
+    /* Weitere Anpassungen */
+}
+
+#webmusterCanvas {
+    width: 100%;
+    height: 400px;
+    background-color: #f1e8e8;
+    border: 5px solid #a7a6a6;
+}
+
+nav.w3-bar {
+    position: fixed;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px #979797;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-links {
+        display: none;
+        width: 100%;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .w3-bar-item {
+        display: block;
+        text-align: center;
+    }
+
+    #info {
+        padding: 10px;
+        text-align: center;
+    }
+
+    #canvasInput, #app {
+        padding: 10px;
+    }
+
+    #ausgabe {
+        padding: 10px;
+    }
+}

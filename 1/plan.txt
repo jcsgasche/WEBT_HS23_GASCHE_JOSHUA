@@ -1,0 +1,152 @@
+Frontend:
+
+    Eingabebereich: Personalisierte Kleider
+        Inputfelder:
+            Dropdown-Menü für Kleidungsstück (Pullover, T-Shirt, Schal, Socken).
+            Dropdown-Menü für Webmuster (Leinen, Köper, Atlas).
+            Fadenfarbe: Farbauswahl.
+            Stofftextur: Schieberegler (range) mit Werten von 5 bis 50.
+            Dropdown-Menü für Größe (S, M, L, XL, XXL).
+            Name: Texteingabefeld.
+            E-Mail: E-Mail Eingabefeld.
+            Nachricht (optional): Textbereich.
+        Reaktive Validierung mit Vue.js:
+            Überprüft, ob alle erforderlichen Felder ausgefüllt sind.
+            Bestätigt die Gültigkeit der E-Mail-Adresse.
+            Validiert den Wertebereich der Stofftextur.
+
+    Ausgabebereich:
+        Anzeige einer Bestätigungsnachricht nach erfolgreichem Absenden der Daten.
+
+Backend:
+
+    Datenverarbeitung:
+        Empfängt die Daten vom Frontend und verarbeitet sie.
+        Generiert eine personalisierte Bestätigungsnachricht basierend auf den Eingaben.
+        Rückgabe dieser Nachricht als Teil einer JSON-HTTP-Antwort.
+
+    Cookie-Einsatz:
+        Ein Cookie speichert z.B. die zuletzt ausgewählte Größe oder das letzte gewählte Webmuster für den Nutzer.
+
+Bestätigungsnachricht:
+
+    "Vielen Dank für deinen Kauf, [Name]! Du hast ein [Kleidungsstück] in der Größe [Größe], Farbe [Farbe] mit der Textur [Textur], Muster [Muster] und Webform [Webform] gekauft."
+
+Zusätzliche Überlegungen:
+
+    Sicherheitsaspekte: Stellen Sie sicher, dass alle Daten, die an das Backend gesendet werden, ordnungsgemäß bereinigt und validiert werden, um Sicherheitsrisiken wie SQL-Injection oder Cross-Site Scripting zu vermeiden.
+    Datenschutz: Achten Sie darauf, dass die Verwendung von Cookies und die Speicherung persönlicher Informationen den Datenschutzbestimmungen entsprechen.
+
+
+
+
+
+
+
+
+
+
+
+Designelemente
+
+    Farbschema: Einfach und klar, mit Farben, die an traditionelle Webstoffe erinnern.
+    Schriftarten: Standard-Webfonts für eine gute Lesbarkeit und eine breite Kompatibilität.
+    Bilder: Auswahl an Bildern, die verschiedene Aspekte des Webens zeigen, wie Webstühle, Garnrollen und fertige Webstoffe.
+
+Funktionsweise der Interaktionen
+
+    Interaktive Webmuster-Erstellung:
+        Benutzer wählen aus vorgegebenen Optionen: Fadenfarbe, Webmuster-Typ, Stofftextur.
+        Ein Canvas-Element im Frontend zeigt eine Vorschau des gewählten Musters.
+        Bei Klick auf einen „Weben“-Button sendet das Frontend die Daten via AJAX an das Backend.
+        Das Backend (PHP) verarbeitet die Daten und sendet die Musterdarstellung als JSON zurück.
+        Das Frontend aktualisiert den Canvas entsprechend der JSON-Daten.
+
+    Informationsdarstellung:
+        Ein dedizierter Abschnitt auf der Webseite stellt Informationen über Webtechniken bereit.
+        Textinhalte werden durch Bilder ergänzt, um die Themen visuell zu unterstützen.
+        Scrollbare Abschnitte oder Tabs zur Organisation der Inhalte.
+
+Technische Details
+
+    Frontend:
+        HTML für die Grundstruktur der Webseite.
+        JavaScript für interaktive Elemente und AJAX-Anfragen.
+        Vue.js für reaktive Eingabevalidierung und dynamische Datenbindung.
+        W3.CSS für das Styling und responsive Design.
+        Canvas-API für die Darstellung der Webmuster.
+
+    Backend:
+        PHP für die Serverseitige Logik und Datenverarbeitung.
+        Erzeugung von JSON-Dokumenten zur Kommunikation mit dem Frontend.
+
+    Sonstiges:
+        Standard-Webfonts für die Textdarstellung.
+        Optimierung für verschiedene Geräteklassen (Mobile und Desktop).
+
+///
+
+
+Schritt 1: HTML-Struktur
+Aufgabe:
+
+Erstellen Sie das Grundgerüst der Webseite mit den erforderlichen Abschnitten: Navigation, Information, Eingabebereich, Ausgabebereich und Canvas-Bereich.
+Aktion:
+
+    Erstellen einer index.html-Datei.
+    Implementieren Sie die Grundstruktur mit <nav>, <section>, <div>, <canvas> usw.
+    Beachten Sie die Anforderungen bezüglich der maximalen Zeilenzahl und Elemente pro Zeile.
+
+Schritt 2: CSS-Styling
+Aufgabe:
+
+Anpassen des Layouts und Designs unter Verwendung von W3.CSS.
+Aktion:
+
+    Erstellen von CSS-Dateien für das Styling.
+    Verwendung von W3.CSS für ein responsives Design, angepasst an Mobile- und Desktop-Ansichten.
+
+Schritt 3: JavaScript- und Vue.js-Integration
+Aufgabe:
+
+Programmierung der Logik für den Datenaustausch zwischen Frontend und Backend sowie für die reaktive Eingabevalidierung.
+Aktion:
+
+    Erstellen von JavaScript-Dateien für die AJAX-Anfragen und Datenmanipulation.
+    Implementieren der reaktiven Eingabevalidierung mit Vue.js.
+
+Schritt 4: PHP-Backend
+Aufgabe:
+
+Entwicklung der Backend-Logik zur Verarbeitung der Eingabedaten und Erstellung der JSON-Antwort.
+Aktion:
+
+    Erstellen einer backend.php-Datei.
+    Programmieren der Logik zur Verarbeitung der Eingaben und Erzeugung einer entsprechenden JSON-Antwort.
+
+Schritt 5: Canvas-Implementierung
+Aufgabe:
+
+Programmierung eines dynamischen Canvas-Elements, das sich basierend auf Benutzereingaben ändert.
+Aktion:
+
+    Implementieren des Canvas-Elements im HTML.
+    Schreiben von JavaScript-Code zur Steuerung der Zeichenoperationen auf dem Canvas.
+
+Schritt 6: Testen und Validieren
+Aufgabe:
+
+Überprüfen Sie die Funktionalität und Konformität mit den Projektanforderungen.
+Aktion:
+
+    Testen Sie alle Funktionen, sowohl im Frontend als auch im Backend.
+    Stellen Sie sicher, dass die Validierungen korrekt funktionieren.
+
+Schritt 7: Dokumentation und Abgabe
+Aufgabe:
+
+Dokumentieren Sie Ihre Arbeit und bereiten Sie alles für die Abgabe vor.
+Aktion:
+
+    Erstellen Sie eine kurze Dokumentation, die die Struktur und Funktionsweise Ihrer Webapplikation beschreibt.
+    Stellen Sie sicher, dass alle Dateien korrekt benannt sind und die erforderliche Verzeichnisstruktur eingehalten wird.
