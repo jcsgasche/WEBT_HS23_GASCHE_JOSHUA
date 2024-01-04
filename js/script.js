@@ -1,5 +1,5 @@
 function toggleMenu() {
-    var navLinks = document.getElementById("navLinks");
+    let navLinks = document.getElementById("navLinks");
     if (navLinks.style.display === "block") {
         navLinks.style.display = "none";
     } else {
@@ -143,7 +143,7 @@ let app = Vue.createApp({
             }
         },
         isValidColor(strColor) {
-            var s = new Option().style;
+            let s = new Option().style;
             s.color = strColor;
             return s.color !== '';
         },
