@@ -147,45 +147,30 @@ let app = Vue.createApp({
             s.color = strColor;
             return s.color !== '';
         },
+        // Farbe und Textur validiere ich nicht, da sie regler mit vorgegebenen Werten haben, weshalb man intuitiverweise diese Auch gleich so lassen kann.
+        // Beim Rest fand ich es sinnvoll, dass man den User dazu bringt, etwas auszuwählen
         validateAllFields() {
-            // Farbe und Textur validiere ich nicht, da sie regler mit vorgegebenen Werten haben, weshalb man intuitiverweise diese Auch gleich so lassen kann.
-            // Beim Rest fand ich es sinnvoll, dass man den User dazu bringt, etwas auszuwählen
             let isValid = true;
-            isValid = this.validateKleidungsstueck() && isValid;
-            isValid = this.validateWebmuster() && isValid;
-            isValid = this.validateGroesse() && isValid;
+            isValid = this.validateField('kleidungsstueck', 'Bitte wählen Sie ein Kleidungsstück aus.') && isValid;
+            isValid = this.validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.') && isValid;
+            isValid = this.validateField('groesse', 'Bitte wählen Sie eine Grösse aus.') && isValid;
             isValid = this.validateName() && isValid;
             isValid = this.validateEmail() && isValid;
             return isValid;
         },
         // Error Message, wenn nichts ausgewählt wird oder zurück zu "keiner Auswahl" gewechselt wird.
-        validateKleidungsstueck() {
-            if (this.formData.kleidungsstueck === '') {
-                this.formErrors.kleidungsstueck = 'Bitte wählen Sie ein Kleidungsstück aus.';
+        validateField(fieldName, errorMessage) {
+            if (this.formData[fieldName] === '') {
+                this.formErrors[fieldName] = errorMessage;
+                return false;
             } else {
-                this.formErrors.kleidungsstueck = '';
-                return true;
-            }
-        },               
-        validateWebmuster() {
-            if (this.formData.webmuster === '') {
-                this.formErrors.webmuster = 'Bitte wählen Sie ein Webmuster aus.';
-            } else {
-                this.formErrors.webmuster = '';
-                return true;
-            }
-        }, 
-        validateGroesse() {
-            if (this.formData.groesse === '') {
-                this.formErrors.groesse = 'Bitte wählen Sie eine Grösse aus.';
-            } else {
-                this.formErrors.groesse = '';
+                this.formErrors[fieldName] = '';
                 return true;
             }
         },
         validateName() {
             // https://stackoverflow.com/questions/2385701/regular-expression-for-first-and-last-name
-            let nameRegex = (/^[a-z ,.'-]+$/i);
+            let nameRegex = /^[a-z ,.'-]+$/i;
             if (this.formData.name === '') {
                 this.formErrors.name = 'Bitte geben Sie Ihren Namen ein.';
             } else if (!nameRegex.test(this.formData.name)) {
@@ -194,28 +179,27 @@ let app = Vue.createApp({
                 this.formErrors.name = '';
                 return true;
             }
-        },        
+        },
         validateEmail() {
             // https://www.w3resource.com/javascript/form/email-validation.php
-            let emailRegex = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+            let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if (this.formData.email === '') {
                 this.formErrors.email = 'Bitte geben Sie eine E-Mail-Adresse ein.';
             } else if (!emailRegex.test(this.formData.email)) {
                 this.formErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-            } else {
+            } else { 
                 this.formErrors.email = '';
                 return true;
             }
-        },        
-        
+        },
     },
     // Weil die Methoden hier schon aufgerufen werden, kann dier Error Message auch angezeigt werden, wenn man gar nichts auswählt.
     // Durch die doppelte Bedingung im HTML wird der Error erst sichtbar, wenn man daruf klickt.
     // Somit erscheint auch eine Error Message, wenn man nichts auswählt (Nicht nur beim zurück wechseln auf ""/"keine Angabe"/"bitte wählen")
     created() {
-        this.validateKleidungsstueck();
-        this.validateWebmuster();
-        this.validateGroesse();
+        this.validateField('kleidungsstueck', 'Bitte wählen Sie ein Kleidungsstück aus.');
+        this.validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.'); 
+        this.validateField('groesse', 'Bitte wählen Sie eine Grösse aus.');
         this.validateName();
         this.validateEmail();
     },

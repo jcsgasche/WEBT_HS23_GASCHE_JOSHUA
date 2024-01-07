@@ -24,7 +24,7 @@
     <br><br>
 
     <section id="info" class="w3-container">
-        <img src="img/web-t.jpg">
+        <img src="img/web-t.jpg" alt="Bilder von Web-Technologien">
         <h2>Web-Technologien: Das Weben</h2>
         <p>Willkommen auf der Seite der Web-Technologien. <br> 
             Auf dieser Seite können Sie verschiedene Webmuster erstellen und ausprobieren. <br>
@@ -68,7 +68,7 @@
             <!-- Bestell-Form -->
             <form @submit.prevent="submitForm" id="eingabe">
                 <label for="kleidungsstueck">Kleidungsstück:</label>
-                <select id="kleidungsstueck" v-model="formData.kleidungsstueck" @change="validateKleidungsstueck" @blur="fieldTouched.kleidungsstueck = true">
+                <select id="kleidungsstueck" v-model="formData.kleidungsstueck" @change="validateField('kleidungsstueck', 'Bitte wählen Sie ein Kleidungsstück aus.')" @blur="fieldTouched.kleidungsstueck = true">
                     <option value="">Bitte wählen</option>
                     <option value="Pullover">Pullover</option>
                     <option value="T-Shirt">T-Shirt</option>
@@ -80,7 +80,7 @@
                 <br><br>
 
                 <label for="webmuster">Webmuster:</label>
-                <select id="webmuster" v-model="formData.webmuster" @change="validateWebmuster" @blur="fieldTouched.webmuster = true">
+                <select id="webmuster" v-model="formData.webmuster" @change="validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.')" @blur="fieldTouched.webmuster = true">
                     <option value="">Bitte wählen</option>
                     <option value="Leinen">Leinen</option>
                     <option value="Köper">Köper</option>
@@ -99,7 +99,7 @@
                 <br><br>
         
                 <label for="groesse">Grösse:</label>
-                <select id="groesse" v-model="formData.groesse" @change="validateGroesse" @blur="fieldTouched.groesse = true">
+                <select id="groesse" v-model="formData.groesse" @change="validateField('groesse', 'Bitte wählen Sie eine Grösse aus.')" @blur="fieldTouched.groesse = true">
                     <option value="">Bitte wählen</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
