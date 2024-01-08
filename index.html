@@ -9,35 +9,34 @@
 </head>
 
 <body>
-    <div class="w3-bar w3-light-grey w3-top">
-        <button class="w3-bar-item w3-button w3-hide-large" onclick="toggleMenu()">
-    ☰
-</button>
-        <div id="navDemo" class="w3-hide w3-hide-large w3-bar-block">
+        <div class="w3-bar w3-light-grey w3-top">
+            <button class="w3-bar-item w3-button w3-hide-medium w3-hide-large" onclick="toggleMenu()">
+        ☰
+    </button>
+        <div id="nav" class="w3-hide w3-hide-medium w3-hide-large w3-bar-block">
             <a href="#info" class="w3-bar-item w3-button">Über diese Seite</a>
             <a href="#canvasInput" class="w3-bar-item w3-button">Der Canvas der Web-Technologien</a>
             <a href="#app" class="w3-bar-item w3-button">Eingabebereich</a>
             <a href="#ausgabe" class="w3-bar-item w3-button">Ausgabebereich</a>
         </div>
 
-        <div class="w3-bar w3-hide-small w3-hide-medium">
+        <div class="w3-bar w3-hide-small">
             <a href="#info" class="w3-bar-item w3-button">Über diese Seite</a>
             <a href="#canvasInput" class="w3-bar-item w3-button">Der Canvas der Web-Technologien</a>
             <a href="#app" class="w3-bar-item w3-button">Eingabebereich</a>
             <a href="#ausgabe" class="w3-bar-item w3-button">Ausgabebereich</a>
         </div>
-
     </div>
     
     <div class="w3-padding-32"></div>
 
-    <section id="info" class="w3-container">
+    <section id="info" class="w3-container w3-col s12 l6">
         <div class="w3-row">
-            <div class="w3-col m6 w3-center"></div>
+            <div class="w3-col w3-center"></div>
             <h1>Web-Technologien: Das Weben</h1>
-                <img src="img/web-t.jpg" alt="Bilder von Web-Technologien" class="w3-image">
+                <img src="img/web-t.jpg" alt="Bild von: Die Produktionswerkstatt für gewebte Bänder, Eine Fabrikwerkstatt, in der Textilbänder hergestellt werden." class="w3-image">
         </div>
-        <div class="w3-col m6">
+        <div class="w3-col">
         <h2>Über diese Seite</h2>
         <p>Willkommen auf der Seite der Web-Technologien. <br> 
             Auf dieser Seite können Sie verschiedene Webmuster erstellen und ausprobieren. <br>
@@ -46,16 +45,17 @@
             Sie bekommen eine Bestätigung unter "Ausgabebereich".<br></p>
         </div>
     </div>
+        <img src="img/web-t2.jpg" alt="Bild von: Gewebtes Fiberglas in einem weichen Cockpit." class="w3-image">
     </section>
 
-    <section id="canvasInput" class="w3-container">
+    <section id="canvasInput" class="w3-container w3-col s12 l6">
         <div class="w3-row">
-            <div class="w3-col s12">
+            <div class="w3-col">
                 <h2>Der Canvas der Web-Technologien</h2>
                     <form id="webForm">
                     <label for="farbe">Fadenfarbe:</label>
                     <input type="color" id="farbe" class="w3-input">
-                    <br><br>
+                    <br>
             
                     <label for="muster">Webmuster-Typ:</label>
                     <select id="muster" class="w3-select">
@@ -63,29 +63,28 @@
                         <option value="köper">Köper</option>
                         <option value="atlas">Atlas</option>
                     </select>
-                    <br><br>
+                    <br>
             
                     <label for="textur">Stofftextur:</label>
                     <input type="range" id="textur" min="5" max="50" class="w3-input">
-                    <br><br>
+                    <br>
             
                     <input type="submit" value="Weben" class="w3-input">
                 </form>
             </div>
         </div>
     </section>
-    <br><br>
+    <br>
     
-    <section class="w3-container">
-        <h2>Der Canvas der Web-Technologien</h2>
+    <section class="w3-container w3-col s12 l6">
         <div class="w3-responsive">
             <canvas id="webmusterCanvas"></canvas>
         </div>
     </section>
 
-    <section class="w3-container">
+    <section class="w3-container w3-col s12 l6">
         <div class="w3-row">
-            <div class="w3-col s12">
+            <div class="w3-col">
                 <h2>Eingabebereich</h2>
                 <div id="app">
                     <!-- Bestell-Form -->
@@ -100,7 +99,7 @@
                         </select>
                         <!-- Doppelte Bedingung, damit der Error nicht direkt am Anfang angezeigt wird, ohne dass der User gelickt hat-->
                         <span class="error-message" v-if="formErrors.kleidungsstueck && fieldTouched.kleidungsstueck">{{ formErrors.kleidungsstueck }}</span>
-                        <br><br>
+                        <br>
 
                         <label for="webmuster">Webmuster:</label>
                         <select id="webmuster" v-model="formData.webmuster" @change="validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.')" @blur="fieldTouched.webmuster = true" class="w3-select">
@@ -110,16 +109,16 @@
                             <option value="Atlas">Atlas</option>
                         </select>
                         <span class="error-message" v-if="formErrors.webmuster && fieldTouched.webmuster">{{ formErrors.webmuster }}</span>
-                        <br><br>
+                        <br>
 
                         <!-- Ja, es macht auch hier Sinn, eine freie Farbauswahl zu verwenden, da die Kleider personalisiert und in einem Einzelauftrag hergestellt werden können.-->
                         <label for="fadenfarbe">Fadenfarbe:</label>
                         <input type="color" id="fadenfarbe" v-model="formData.fadenfarbe" class="w3-input">
-                        <br><br>
+                        <br>
                 
                         <label for="stofftextur">Stofftextur:</label>
                         <input type="range" id="stofftextur" v-model.number="formData.stofftextur" min="5" max="50" class="w3-input">
-                        <br><br>
+                        <br>
                 
                         <label for="groesse">Grösse:</label>
                         <select id="groesse" v-model="formData.groesse" @change="validateField('groesse', 'Bitte wählen Sie eine Grösse aus.')" @blur="fieldTouched.groesse = true" class="w3-select">
@@ -131,24 +130,24 @@
                             <option value="XXL">XXL</option>
                         </select>
                         <span class="error-message" v-if="formErrors.groesse && fieldTouched.groesse">{{ formErrors.groesse }}</span>
-                        <br><br>
+                        <br>
                 
                         <label for="name">Name:</label>
                         <input type="text" id="name" v-model="formData.name" @change="validateName" @blur="fieldTouched.name = true" class="w3-input">
                         <span class="error-message" v-if="formErrors.name && fieldTouched.name">{{ formErrors.name }}</span>
-                        <br><br>
+                        <br>
                 
                         <label for="email">E-Mail:</label>
                         <input type="email" id="email" v-model="formData.email" @change="validateEmail" @blur="fieldTouched.email = true" class="w3-input">
                         <span class="error-message" v-if="formErrors.email && fieldTouched.email">{{ formErrors.email }}</span>
-                        <br><br>
+                        <br>
                 
-                        <label for="nachricht">Nachricht (optional):</label>
+                        <label for="nachricht">Nachricht (optional):</label><br>
                         <textarea id="nachricht" v-model="formData.nachricht"></textarea>
-                        <br><br>
+                        <br>
 
                         <span class="error-message" v-if="formErrors.allFields">{{ formErrors.allFields }}</span>
-                        <br><br>
+                        <br>
 
                         <button type="submit">Bestellung absenden</button>
                     </form>
