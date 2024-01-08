@@ -1,9 +1,9 @@
 function toggleMenu() {
-    let navLinks = document.getElementById("navLinks");
-    if (navLinks.style.display === "block") {
-        navLinks.style.display = "none";
-    } else {
-        navLinks.style.display = "block";
+    let x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
     }
 }
 

@@ -9,143 +9,167 @@
 </head>
 
 <body>
-    <nav class="w3-bar w3-light-grey">
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            &#9776;
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a href="#info" class="w3-bar-item w3-button">Web-Technologien: Das Weben</a>
+    <div class="w3-bar w3-light-grey w3-top">
+        <button class="w3-bar-item w3-button w3-hide-large" onclick="toggleMenu()">
+    ☰
+</button>
+        <div id="navDemo" class="w3-hide w3-hide-large w3-bar-block">
+            <a href="#info" class="w3-bar-item w3-button">Über diese Seite</a>
             <a href="#canvasInput" class="w3-bar-item w3-button">Der Canvas der Web-Technologien</a>
             <a href="#app" class="w3-bar-item w3-button">Eingabebereich</a>
             <a href="#ausgabe" class="w3-bar-item w3-button">Ausgabebereich</a>
         </div>
-    </nav>
+
+        <div class="w3-bar w3-hide-small w3-hide-medium">
+            <a href="#info" class="w3-bar-item w3-button">Über diese Seite</a>
+            <a href="#canvasInput" class="w3-bar-item w3-button">Der Canvas der Web-Technologien</a>
+            <a href="#app" class="w3-bar-item w3-button">Eingabebereich</a>
+            <a href="#ausgabe" class="w3-bar-item w3-button">Ausgabebereich</a>
+        </div>
+
+    </div>
     
-    <br><br>
+    <div class="w3-padding-32"></div>
 
     <section id="info" class="w3-container">
-        <img src="img/web-t.jpg" alt="Bilder von Web-Technologien">
-        <h2>Web-Technologien: Das Weben</h2>
+        <div class="w3-row">
+            <div class="w3-col m6 w3-center"></div>
+            <h1>Web-Technologien: Das Weben</h1>
+                <img src="img/web-t.jpg" alt="Bilder von Web-Technologien" class="w3-image">
+        </div>
+        <div class="w3-col m6">
+        <h2>Über diese Seite</h2>
         <p>Willkommen auf der Seite der Web-Technologien. <br> 
             Auf dieser Seite können Sie verschiedene Webmuster erstellen und ausprobieren. <br>
             Benutzen Sie dazu einfach den Canvas, um ein dynamisches Erlebnis und einen neuen Eindruck über das Web-Erlebnis zu bekommen.<br>
             Wenn Sie Ihre liebste Web-Technologie gefunden haben, können Sie auch direkt ein Kleidungsstück unter "Eingabebereich" bestellen. 
-            Sie bekommen eine Bestätigung unter "Ausgabebereich".<br>
-        </p>
+            Sie bekommen eine Bestätigung unter "Ausgabebereich".<br></p>
+        </div>
+    </div>
     </section>
 
     <section id="canvasInput" class="w3-container">
+        <div class="w3-row">
+            <div class="w3-col s12">
+                <h2>Der Canvas der Web-Technologien</h2>
+                    <form id="webForm">
+                    <label for="farbe">Fadenfarbe:</label>
+                    <input type="color" id="farbe" class="w3-input">
+                    <br><br>
+            
+                    <label for="muster">Webmuster-Typ:</label>
+                    <select id="muster" class="w3-select">
+                        <option value="leinen">Leinen</option>
+                        <option value="köper">Köper</option>
+                        <option value="atlas">Atlas</option>
+                    </select>
+                    <br><br>
+            
+                    <label for="textur">Stofftextur:</label>
+                    <input type="range" id="textur" min="5" max="50" class="w3-input">
+                    <br><br>
+            
+                    <input type="submit" value="Weben" class="w3-input">
+                </form>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    
+    <section class="w3-container">
         <h2>Der Canvas der Web-Technologien</h2>
-            <form id="webForm">
-            <label for="farbe">Fadenfarbe:</label>
-            <input type="color" id="farbe">
-            <br><br>
-    
-            <label for="muster">Webmuster-Typ:</label>
-            <select id="muster">
-                <option value="leinen">Leinen</option>
-                <option value="köper">Köper</option>
-                <option value="atlas">Atlas</option>
-            </select>
-            <br><br>
-    
-            <label for="textur">Stofftextur:</label>
-            <input type="range" id="textur" min="5" max="50"><br><br>
-    
-            <input type="submit" value="Weben">
-        </form>
-        </section>
-        <br><br>
-    
-    </section class="w3-container">
-        <canvas id="webmusterCanvas" class="w3-responsive"></canvas>
+        <div class="w3-responsive">
+            <canvas id="webmusterCanvas"></canvas>
+        </div>
     </section>
 
     <section class="w3-container">
-        <h2>Eingabebereich</h2>
-        
-        <div id="app">
-            <!-- Bestell-Form -->
-            <form @submit.prevent="submitForm" id="eingabe">
-                <label for="kleidungsstueck">Kleidungsstück:</label>
-                <select id="kleidungsstueck" v-model="formData.kleidungsstueck" @change="validateField('kleidungsstueck', 'Bitte wählen Sie ein Kleidungsstück aus.')" @blur="fieldTouched.kleidungsstueck = true">
-                    <option value="">Bitte wählen</option>
-                    <option value="Pullover">Pullover</option>
-                    <option value="T-Shirt">T-Shirt</option>
-                    <option value="Schal">Schal</option>
-                    <option value="Socken">Socken</option>
-                </select>
-                <!-- Doppelte Bedingung, damit der Error nicht direkt am Anfang angezeigt wird, ohne dass der User gelickt hat-->
-                <span class="error-message" v-if="formErrors.kleidungsstueck && fieldTouched.kleidungsstueck">{{ formErrors.kleidungsstueck }}</span>
-                <br><br>
+        <div class="w3-row">
+            <div class="w3-col s12">
+                <h2>Eingabebereich</h2>
+                <div id="app">
+                    <!-- Bestell-Form -->
+                    <form @submit.prevent="submitForm" id="eingabe">
+                        <label for="kleidungsstueck">Kleidungsstück:</label>
+                        <select id="kleidungsstueck" v-model="formData.kleidungsstueck" @change="validateField('kleidungsstueck', 'Bitte wählen Sie ein Kleidungsstück aus.')" @blur="fieldTouched.kleidungsstueck = true" class="w3-select">
+                            <option value="">Bitte wählen</option>
+                            <option value="Pullover">Pullover</option>
+                            <option value="T-Shirt">T-Shirt</option>
+                            <option value="Schal">Schal</option>
+                            <option value="Socken">Socken</option>
+                        </select>
+                        <!-- Doppelte Bedingung, damit der Error nicht direkt am Anfang angezeigt wird, ohne dass der User gelickt hat-->
+                        <span class="error-message" v-if="formErrors.kleidungsstueck && fieldTouched.kleidungsstueck">{{ formErrors.kleidungsstueck }}</span>
+                        <br><br>
 
-                <label for="webmuster">Webmuster:</label>
-                <select id="webmuster" v-model="formData.webmuster" @change="validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.')" @blur="fieldTouched.webmuster = true">
-                    <option value="">Bitte wählen</option>
-                    <option value="Leinen">Leinen</option>
-                    <option value="Köper">Köper</option>
-                    <option value="Atlas">Atlas</option>
-                </select>
-                <span class="error-message" v-if="formErrors.webmuster && fieldTouched.webmuster">{{ formErrors.webmuster }}</span>
-                <br><br>
+                        <label for="webmuster">Webmuster:</label>
+                        <select id="webmuster" v-model="formData.webmuster" @change="validateField('webmuster', 'Bitte wählen Sie ein Webmuster aus.')" @blur="fieldTouched.webmuster = true" class="w3-select">
+                            <option value="">Bitte wählen</option>
+                            <option value="Leinen">Leinen</option>
+                            <option value="Köper">Köper</option>
+                            <option value="Atlas">Atlas</option>
+                        </select>
+                        <span class="error-message" v-if="formErrors.webmuster && fieldTouched.webmuster">{{ formErrors.webmuster }}</span>
+                        <br><br>
 
-                <!-- Ja, es macht auch hier Sinn, eine freie Farbauswahl zu verwenden, da die Kleider personalisiert und in einem Einzelauftrag hergestellt werden können.-->
-                <label for="fadenfarbe">Fadenfarbe:</label>
-                <input type="color" id="fadenfarbe" v-model="formData.fadenfarbe">
-                <br><br>
-        
-                <label for="stofftextur">Stofftextur:</label>
-                <input type="range" id="stofftextur" v-model.number="formData.stofftextur" min="5" max="50">
-                <br><br>
-        
-                <label for="groesse">Grösse:</label>
-                <select id="groesse" v-model="formData.groesse" @change="validateField('groesse', 'Bitte wählen Sie eine Grösse aus.')" @blur="fieldTouched.groesse = true">
-                    <option value="">Bitte wählen</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-                <span class="error-message" v-if="formErrors.groesse && fieldTouched.groesse">{{ formErrors.groesse }}</span>
-                <br><br>
-        
-                <label for="name">Name:</label>
-                <input type="text" id="name" v-model="formData.name" @change="validateName" @blur="fieldTouched.name = true">
-                <span class="error-message" v-if="formErrors.name && fieldTouched.name">{{ formErrors.name }}</span>
-                <br><br>
-        
-                <label for="email">E-Mail:</label>
-                <input type="email" id="email" v-model="formData.email" @change="validateEmail" @blur="fieldTouched.email = true">
-                <span class="error-message" v-if="formErrors.email && fieldTouched.email">{{ formErrors.email }}</span>
-                <br><br>
-        
-                <label for="nachricht">Nachricht (optional):</label>
-                <textarea id="nachricht" v-model="formData.nachricht"></textarea>
-                <br><br>
+                        <!-- Ja, es macht auch hier Sinn, eine freie Farbauswahl zu verwenden, da die Kleider personalisiert und in einem Einzelauftrag hergestellt werden können.-->
+                        <label for="fadenfarbe">Fadenfarbe:</label>
+                        <input type="color" id="fadenfarbe" v-model="formData.fadenfarbe" class="w3-input">
+                        <br><br>
+                
+                        <label for="stofftextur">Stofftextur:</label>
+                        <input type="range" id="stofftextur" v-model.number="formData.stofftextur" min="5" max="50" class="w3-input">
+                        <br><br>
+                
+                        <label for="groesse">Grösse:</label>
+                        <select id="groesse" v-model="formData.groesse" @change="validateField('groesse', 'Bitte wählen Sie eine Grösse aus.')" @blur="fieldTouched.groesse = true" class="w3-select">
+                            <option value="">Bitte wählen</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                        <span class="error-message" v-if="formErrors.groesse && fieldTouched.groesse">{{ formErrors.groesse }}</span>
+                        <br><br>
+                
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" v-model="formData.name" @change="validateName" @blur="fieldTouched.name = true" class="w3-input">
+                        <span class="error-message" v-if="formErrors.name && fieldTouched.name">{{ formErrors.name }}</span>
+                        <br><br>
+                
+                        <label for="email">E-Mail:</label>
+                        <input type="email" id="email" v-model="formData.email" @change="validateEmail" @blur="fieldTouched.email = true" class="w3-input">
+                        <span class="error-message" v-if="formErrors.email && fieldTouched.email">{{ formErrors.email }}</span>
+                        <br><br>
+                
+                        <label for="nachricht">Nachricht (optional):</label>
+                        <textarea id="nachricht" v-model="formData.nachricht"></textarea>
+                        <br><br>
 
-                <span class="error-message" v-if="formErrors.allFields">{{ formErrors.allFields }}</span>
-                <br><br>
+                        <span class="error-message" v-if="formErrors.allFields">{{ formErrors.allFields }}</span>
+                        <br><br>
 
-                <button type="submit">Bestellung absenden</button>
-            </form>
+                        <button type="submit">Bestellung absenden</button>
+                    </form>
 
-            <section id="ausgabe">
-                <h2>Ausgabebereich</h2>
-                <div v-if="!submitted">
-                    <p>Bitte füllen Sie das Formular aus, um eine Bestellung aufzugeben.</p>
+                    <section id="ausgabe">
+                        <h2>Ausgabebereich</h2>
+                        <div v-if="!submitted">
+                            <p>Bitte füllen Sie das Formular aus, um eine Bestellung aufzugeben.</p>
+                        </div>
+                        <!-- Erste Bestell-Bestätigung -->
+                        <div v-if="submitted">
+                            <p>Bestellung abgesendet!</p>
+                        </div>
+                        <!-- Definitive Bestellbestätigung -->
+                        <div v-if="serverResponse">
+                            <p>{{ serverResponse }}</p>
+                        </div>
+                    </section>
                 </div>
-                <!-- Erste Bestell-Bestätigung -->
-                <div v-if="submitted">
-                    <p>Bestellung abgesendet!</p>
-                </div>
-                <!-- Definitive Bestellbestätigung -->
-                <div v-if="serverResponse">
-                    <p>{{ serverResponse }}</p>
-                </div>
-            </section>
+            </div>
         </div>
-
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31"></script>
