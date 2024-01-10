@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json');
 
-
 $bestellungsanzahl = isset($_COOKIE['bestellungsanzahl']) ? (int)$_COOKIE['bestellungsanzahl'] : 0;
 
 $bestellungsanzahl++;
